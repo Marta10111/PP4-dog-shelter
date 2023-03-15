@@ -1,1 +1,1 @@
-web: gunicorn pp4dogshelter.wsgi
+web: gunicorn dogShelter.wsgi
