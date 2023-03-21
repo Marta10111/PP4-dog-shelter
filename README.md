@@ -2,11 +2,8 @@
 
 ## Purpose of this site
 
-This site has been created so that users can see informations about dogs for adoption. 
-Unregistered Users can view a summary of the posts, and see number of likes and comments.
+This site has been created so that users can see informations about dogs for adoption. Unregistered Users can view a summary of the posts, and see number of likes and comments.
 Registered Users can comments and like doggies' profiles.
-
-am I responsive
 
 ## User Experience
 
@@ -334,3 +331,83 @@ Warning if the user isn't a registered user
 ### Lighthouse
 
 ![lighthouse results](/documentation/testing/manual/lighthouse.jpg)
+
+### Bugs
+
+- blank line contains whitespace - fixed
+- no new line at the end of file - fixed
+- ms.toolsai.vscode- jupyter- slideshow extention is not synced, but not added in gitpod.yml - not fixed
+
+### Deployment to Heroku
+
+Initial deployment:
+
+I followed the 'I think therefore I blog' walkthrough to create a basic django project.  I used the code institute template. 
+- I installed django and supporting libraries:
+I installed django, gunicorn, psycopg2, cloudinary with pip3 install django gunicorn dj_database_url psycopg2 dj-3-cloudinary-storage
+I created the requirements.txt file with pip3 freeze > requirements.txt
+
+- I created a new django project called 'dogShelter' and a django app called 'blog'.
+python3 manage.py startapp blog
+I need to add blog to installed apps in settings.py.
+After adding new app we need to migrate the changes to the database.
+python3 manage.py migrate
+
+- I set the project to use Cloudinary and PostgreSQL database.
+I created a heroku app called pp4dogshelter.
+I attached it to the database, in resource tab searched for postgres and attached. Then in config vars copy the text beside DATABASE_URL
+
+-I created an env.py file - this contains all the secret environmental variables. I need to reference this in settings.py file. Added env.py to the .gitignore file.
+In the env.py file import os library.
+add os.environ["DATABASE_URL"] = copied string from heroku
+add os.environ["SECRET_KEY"] = make up randon key -add this secret key to heroku config vars
+I connected to cloudinary and tell django to use cloudinary to store media and static files.
+add os.environ["CLOUDINARY_URL"] = "cloudinary://<insert-your-url>" - add this to heroku config vars
+in heroku config vars add DISABLE_COLLECTSTATIC with value 1 - this has to be removed before final deployment
+I set up for static and media at the bottom of settings.py file.
+I needed to tell django where our templates will be stored.
+I needed to add heroku host name into allowed hosts in settings.py file.
+I needed to create 3 directories at the same level as manage.py file for media, static and templates.
+I needed to create a Procfile this tells heroku how to run our project.
+
+- I deployed the empty project to Heroku.
+In Heroku in the deploy tab,
+I click GitHub,
+I search for my repo,
+Then scroll down and deploy branch.
+I watched the build to check it was successful and
+then opened the app.
+I have included a env.sample file which is a copy of my env.py file without the secret information.  This is to show what secret keys are required.
+
+-When I had completed my testing in development, in the settings.py file I set DEBUG = False and added X_FRAME_OPTION = 'SAMEORIGIN'.
+I git add ., then git commit and git push.
+In Heroku I went into config vars and deleted the DISABLE_COLLECTSTATIC = 1
+In the deploy tab in Heroku, I deployed branch and watched the build to check it was successful. Then I opened the app and repeated all my testing to ensure this worked the same as my local testing.
+
+## Credits 
+
+- I used 'I think therefore I blog' to set up files, Heroku app, Cloudinary, environmental variables and GitHub Projects.
+- I used GitHub Projects and Kanban for user stories like 'I think therefore I blog'
+- I used card system from 'I think therefore I blog' for displaying posts.
+- I used the messages from 'I think therefore I blog'
+- To help with crud functionality I used Dennis Ivy Youtube video for to do list app.
+- I got help for showing active page on navbar from 'Favoureats' by Siobhan Gorman.
+- I followed structure of readme from JoGorska_alumni_lead.
+- I used bootstrap links from 'I think therefore I blog'.
+- I used 'I think therefore I blog' for the bases of my footer.
+- I used Dog Trust Ireland for doggos stories.
+- I got the post pictures from - fansshare.com -Cash, zinfos974.com/-Butch, agxii.com -Coco, dogtrust.ie -Tasha, shop21307.babieseverywhere.org -Ben, adobe.com - Tobby.
+- I use You Tube tutorials to help me make what I was planning:
+<br><a href="https://youtu.be/m3hhLE1KR5Q" rel="nofollow">
+https://youtu.be/m3hhLE1KR5Q
+</a>
+<br><a href="https://youtu.be/bPQfd5x_G84" rel="nofollow">
+https://youtu.be/bPQfd5x_G84
+</a>
+<br><a href="https://youtu.be/dPSST_3jyJ0>" rel="nofollow">
+https://youtu.be/dPSST_3jyJ0</a>
+
+## Acknowledgements
+
+- I would like to thank my classmates from Code Institute who supported me in these project: Ivette -cohort and Iris.
+- Help and support from my mentor Martina.
