@@ -207,8 +207,130 @@ The fonts I have selected are : Sans-serif for the text and Lato for the page na
 
 To validate each of my html pages I inspected the page through devtools and viewed the page source and copied and pasted this into the W3C markup validation service.
 
+![Base checker](/documentation/testing/baseChecker.jpg)
 
+![Index checker](/documentation/testing/indexchecker.jpg)
 
+![Post checker](/documentation/testing/postchecker.jpg)
 
+### CSS Validation
 
+I copied my style.css file into the W3C CSS validation service.
 
+![CSS checker](/documentation/testing/cssChecker.jpg)
+
+### Extendclass
+
+I copied and pasted my python files into the Python Code Checker
+
+blog>views.py
+
+![blog.views.py](/documentation/validation/viewsChecker.jpg)
+
+blog>models.py
+
+![blog.models.py](/documentation/validation/modelsChecker.jpg)
+
+blog>forms.py
+
+![blog.forms.py](/documentation/validation/formsChecker.jpg)
+
+blog>urls.py
+
+![blog.urls.py](/documentation/validation/urlsChecker.jpg)
+
+dogShelter>settings.py
+
+![dogShelter.settings.py](/documentation/validation/settingsChecker.jpg)
+
+dogShelter>urls.py
+
+![dogShelter.urls.py](/documentation/validation/urlsChecker1.jpg)
+
+## Testing
+
+### Manual testing
+
+I checked each page to make sure everything look correct at all screen sizes using devtools. 
+
+I have used the user stories as a structure to manually test my project. This testing was on fully deployed site on Heroku.
+
+- as Admin I can create a post
+
+If I do not enter data in the required fields it gives a warning to add data to the required fields. It is ok not to have data in the excerpt field. It is also ok not to include an image. 
+
+![showing warnings for required fields](/documentation/testing/manual/admin_add_post_required.jpg)
+
+When all required fields are filled and the post is saved, we get a success message and can see the new post.
+
+![show success message](/documentation/testing/manual/admin_add_post_success.jpg)
+
+- as Admin I can update a post
+
+Similar to create post in update if any of the required fields are not filled a warning is shown and fields that need to be filled are highlighted. When all required fields are filled a success message is given and I can see the updated post.
+
+![show message post changed successfully](/documentation/testing/manual/admin_updating_post.jpg)
+
+- as admin I can delete a post
+
+When the admin selects the post they want to delete, select action - delete and then clicks go, the admin is asked are they sure they want to delete this post. They have the option of going back or deleting the post.
+
+![show post for delete](/documentation/testing/manual/admin_delete_post.jpg)
+
+- as Admin I can delete a comment
+
+Similar to delete a post I can also delete a comment if its necessary. The steps are same as when deleting a post.
+
+![admin delete comment](/documentation/testing/manual/admin_delete_comment.jpg)
+
+![admin delete comment](/documentation/testing/manual/admin_delete_comment1.jpg)
+
+![admin delete comment](/documentation/testing/manual/admin_delete_comment2.jpg)
+
+- as a site user I can view the number of likes under each post - both logged in and not logged in users can see the number of likes on the main page.
+
+![number of likes](/documentation/testing/manual/likes.jpg)
+
+- as a logged in user I can view a list of posts so i can select one to view by clicking on a dog name. Post details are showed (dog,info, number of comments, comments and add comment window)
+
+![post details](/documentation/testing/manual/post_info.jpg)
+![comment form](/documentation/testing/manual/comment_form.jpg)
+
+I can also like and unlike post.
+
+![post liked](/documentation/testing/manual/post_liked.jpg)
+![post unliked](/documentation/testing/manual/post_unliked.jpg)
+
+- as a new user I can register so that I can comment and like posts
+
+For register, checks with user if they already have an account and if so they can click login which redirects them to the login page.
+
+Allauth checks if the username has been used before.
+
+![user already exist](/documentation/testing/manual/user_exist.jpg)
+
+Checks that a username has been entered.
+
+![empty username window](/documentation/testing/manual/no_username.jpg)
+
+Checks that a password must be entered.
+
+![empty password window](/documentation/testing/manual/no_password.jpg)
+
+For login, checks that the user has an account and if not redirects them to register page.
+
+Warning if username not entered.
+
+![login no username](/documentation/testing/manual/login_no_user.jpg)
+
+Warning if password not entered
+
+![login no password](/documentation/testing/manual/login_no_password.jpg)
+
+Warning if the user isn't a registered user
+
+![user not registered](/documentation/testing/manual/not_registered.jpg)
+
+### Lighthouse
+
+![lighthouse results](/documentation/testing/manual/lighthouse.jpg)

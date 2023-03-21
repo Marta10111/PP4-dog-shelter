@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+
 {% load static %}
 {% block content %}
 
@@ -6,8 +7,9 @@
     <h2 class="text-center">All they just need is a new home and their own person to love!</h2>
     <div class="text-center">
         <h3 class="rehome">Rehome a dog from our Dog Shelter. </h3>
-        <h3>As a Dog Shelter we assists as many dogs as possible to find their new home or to reunite lost/found dogs with  their owners.</h3><br>
-   
+        <h3>As a Dog Shelter we assists as many dogs as possible to find their new home or to reunite lost/found dogs
+            with their owners.</h3><br>
+
         <h4>Contact Information:</h4><br>
         <p>Limerick Dog Shelter</p>
         <p>Dock Road</p>
@@ -16,9 +18,9 @@
         <p>Phone: +3530610301604</p><br>
         <p>All dogs rehomed are micro chipped and are subject to a rehoming fee of <strong>€50</strong></p>
 
-     
+
     </div>
-</section>           
+</section>
 
 <div class="container-fluid">
     <div class="row">
@@ -33,9 +35,9 @@
                             <div class="image-container">
                                 {% if "placeholder" in post.featured_image.url %}
                                 <img class="card-img-top"
-                                    src="https://media.os.fressnapf.com/cms/2020/04/Ratgeber-Rassenportrait-Mops_1200x527.jpg?t=seoimg_703">
+                                    src="https://media.os.fressnapf.com/cms/2020/04/Ratgeber-Rassenportrait-Mops_1200x527.jpg?t=seoimg_703" alt="dog picture">
                                 {% else %}
-                                <img class="card-img-top" src=" {{ post.featured_image.url }}">
+                                <img class="card-img-top" src="{{ post.featured_image.url }}" alt="dog image">
                                 {% endif %}
                                 <div class="image-flash">
                                     <p class="author">Author: {{ post.author }}</p>
@@ -64,15 +66,15 @@
     <nav aria-label="Page navigation">
         <ul class="pagination justify-content-center">
             {% if page_obj.has_previous %}
-            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a>
+            </li>
             {% endif %}
             {% if page_obj.has_next %}
-            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
-
+            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a>
+            </li>
             {% endif %}
         </ul>
     </nav>
     {% endif %}
 </div>
 {%endblock%}
-
